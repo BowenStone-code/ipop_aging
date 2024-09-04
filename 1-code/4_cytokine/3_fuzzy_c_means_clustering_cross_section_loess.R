@@ -1,14 +1,14 @@
-no_source()
 rm(list = ls())
 setwd(here::here())
 source("1-code/100-tools.R")
 
 library(tidyverse)
 library(tidymass)
+library(Biobase)
 
 ###load("data)
 load(
-  "3-data_analysis/plasma_cytokine/data_preparation/object_cross_section_loess"
+  "3-data_analysis/plasma_cytokine/data_preparation/same_samples/object_cross_section_loess"
 )
 
 dir.create(
@@ -58,6 +58,7 @@ temp_data <-
 # temp_data <-
 #   object_cross_section_loess@expression_data
 
+# Calculate the mean for each age group
 temp_data_mean <-
   seq_len(nrow(age_index)) %>%
   purrr::map(function(i) {
@@ -113,6 +114,7 @@ write.table(
 )
 
 #read it back in as an expression set
+# Problem here I cannot find the table2eset
 data <- table2eset(filename = "temp_data.txt")
 data.s <- standardise(data)
 # data.s <- data

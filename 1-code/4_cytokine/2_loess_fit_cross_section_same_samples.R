@@ -1,4 +1,4 @@
-no_function()
+rm(list = ls()[sapply(ls(), function(x) is.function(get(x)))])
 
 ###
 setwd(here::here())
