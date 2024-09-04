@@ -1,7 +1,7 @@
 no_function()
 
 ###
-setwd(r4projects::get_project_wd())
+setwd(here::here())
 rm(list = ls())
 
 source("1-code/100-tools.R")
@@ -102,3 +102,4 @@ object_cross_section_loess@expression_data <-
 save(object_cross_section_loess, file = "object_cross_section_loess")
 
 sum(new_expression_data < 0)
+
